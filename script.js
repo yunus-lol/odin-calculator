@@ -1,6 +1,7 @@
 let operandOne;
-let operandTwO;
+let operandTwo;
 let operator;
+let displayValue = "0";
 
 function add(a, b) {
   return a + b;
@@ -33,3 +34,38 @@ function operate(op, num1, num2) {
     }
   }
 }
+
+const buttons = document.querySelectorAll("button");
+
+function updateDisplay() {
+  const display = document.querySelector(".display");
+  display.classList.add("display-text");
+  display.textContent = displayValue;
+}
+
+updateDisplay();
+
+function click() {
+  const nine = document.querySelector("#nine")
+  nine.addEventListener("click", () => {
+    displayValue += "9"
+    updateDisplay()
+  })
+  const eight = document.querySelector("#eight")
+  eight.addEventListener("click", () => {
+    displayValue += "8"
+    updateDisplay()
+  })  
+  const seven = document.querySelector("#seven")
+  seven.addEventListener("click", () => {
+    displayValue += "7"
+    updateDisplay()
+  })  
+  const six = document.querySelector("#six")
+  six.addEventListener("click", () => {
+    displayValue += "6"
+    updateDisplay()
+  })
+}
+
+click()
