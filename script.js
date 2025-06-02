@@ -45,27 +45,20 @@ function updateDisplay() {
 
 updateDisplay();
 
-function click() {
-  const nine = document.querySelector("#nine")
-  nine.addEventListener("click", () => {
-    displayValue += "9"
-    updateDisplay()
-  })
-  const eight = document.querySelector("#eight")
-  eight.addEventListener("click", () => {
-    displayValue += "8"
-    updateDisplay()
-  })  
-  const seven = document.querySelector("#seven")
-  seven.addEventListener("click", () => {
-    displayValue += "7"
-    updateDisplay()
-  })  
-  const six = document.querySelector("#six")
-  six.addEventListener("click", () => {
-    displayValue += "6"
-    updateDisplay()
-  })
+function appendToDisplay(input) {
+  displayValue = input;
+  updateDisplay();
 }
 
-click()
+function clearDisplay() {
+  displayValue = "0";
+}
+
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    if (displayValue.textContent = "0") {
+      clearDisplay()
+    }
+    appendToDisplay(button.textContent)
+  });
+});
