@@ -1,7 +1,7 @@
 let operandOne;
 let operandTwo;
 let operator;
-let displayValue = "0";
+let displayValue = "";
 
 function add(a, b) {
   return a + b;
@@ -43,22 +43,17 @@ function updateDisplay() {
   display.textContent = displayValue;
 }
 
-updateDisplay();
-
 function appendToDisplay(input) {
-  displayValue = input;
+  displayValue += input;
   updateDisplay();
 }
 
 function clearDisplay() {
-  displayValue = "0";
+  displayValue = "";
 }
 
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
-    if (displayValue.textContent = "0") {
-      clearDisplay()
-    }
     appendToDisplay(button.textContent)
   });
 });
