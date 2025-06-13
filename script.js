@@ -35,6 +35,7 @@ function operate(op, num1, num2) {
   }
 }
 
+
 const buttons = document.querySelectorAll("button");
 
 function updateDisplay() {
@@ -46,6 +47,9 @@ function updateDisplay() {
 function appendToDisplay(input) {
   displayValue += input;
   updateDisplay();
+  if (displayValue.length > 14) {
+    clearDisplay()
+  }
 }
 
 function clearDisplay() {
@@ -54,6 +58,67 @@ function clearDisplay() {
 
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
-    appendToDisplay(button.textContent)
+    if (button.textContent === "AC") {
+      clearDisplay()
+      appendToDisplay("")
+    } else if (button.textContent === "=") {
+      for (let x = 0; x < displayValue.length; x++) {
+        if (displayValue[x] == "+") { // case if operator is +
+            let split = displayValue.split("+")
+            if (split.length > 2) {
+              clearDisplay()
+              appendToDisplay("too long")
+            } else {
+              operandOne = parseInt(split[0])
+              operandTwo = parseInt(split[1])
+              let answer = operate("+", operandOne, operandTwo)
+              clearDisplay()
+              appendToDisplay(answer)
+            }
+          clearDisplay()
+        } else if (displayValue[x] == "-") { // case if operator is -
+            split = displayValue.split("-")
+            if (split.length > 2) {
+              clearDisplay()
+              appendToDisplay("too long")
+            } else {
+              operandOne = parseInt(split[0])
+              operandTwo = parseInt(split[1])
+              answer = operate("-", operandOne, operandTwo)
+              clearDisplay()
+              appendToDisplay(answer)
+            }
+          clearDisplay()
+        } else if (displayValue[x] == "/") { // case if operator is /
+            split = displayValue.split("/")
+            if (split.length > 2) {
+              clearDisplay()
+              appendToDisplay("too long")
+            } else {
+              operandOne = parseInt(split[0])
+              operandTwo = parseInt(split[1])
+              answer = operate("/", operandOne, operandTwo)
+              clearDisplay()
+              appendToDisplay(answer)
+            }
+          clearDisplay()
+        } else if (displayValue[x] == "*") { // case if operator is *
+            split = displayValue.split("*")
+            if (split.length > 2) {
+              clearDisplay()
+              appendToDisplay("too long")
+            } else {
+              operandOne = parseInt(split[0])
+              operandTwo = parseInt(split[1])
+              answer = operate("*", operandOne, operandTwo)
+              clearDisplay()
+              appendToDisplay(answer)
+            }
+          clearDisplay()
+        }
+      }
+    } else {
+      appendToDisplay(button.textContent)
+    }
   });
 });
