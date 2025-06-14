@@ -55,4 +55,5 @@ button {
   flex-direction: row-reverse;
   font-size: 50px;
   padding-right: 10px;
+  color: white;
 }
